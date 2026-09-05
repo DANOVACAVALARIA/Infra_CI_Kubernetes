@@ -5,6 +5,9 @@ module "eks" {
   kubernetes_version      = "1.31"
   endpoint_public_access  = true
 
+  # adicionado
+  enable_cluster_creator_admin_permissions = true
+  
   # Desabilita o EKS Auto Mode (não usado aqui, pois já definimos
   # eks_managed_node_groups manualmente abaixo)
   compute_config = {
