@@ -2,12 +2,11 @@ module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
   name                    = var.cluster_name
-  kubernetes_version      = "1.24"
+  kubernetes_version      = "1.31"
   endpoint_public_access  = true
 
-  # Desabilita o EKS Auto Mode (habilitado por padrão a partir da v21 do módulo,
-  # mas só é suportado em Kubernetes 1.29+). Como já usamos eks_managed_node_groups
-  # manualmente, mantemos o modelo tradicional.
+  # Desabilita o EKS Auto Mode (não usado aqui, pois já definimos
+  # eks_managed_node_groups manualmente abaixo)
   compute_config = {
     enabled = false
   }
