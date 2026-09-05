@@ -5,6 +5,13 @@ module "eks" {
   kubernetes_version      = "1.24"
   endpoint_public_access  = true
 
+  # Desabilita o EKS Auto Mode (habilitado por padrão a partir da v21 do módulo,
+  # mas só é suportado em Kubernetes 1.29+). Como já usamos eks_managed_node_groups
+  # manualmente, mantemos o modelo tradicional.
+  compute_config = {
+    enabled = false
+  }
+
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.public_subnets
 
