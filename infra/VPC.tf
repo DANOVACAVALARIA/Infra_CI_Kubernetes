@@ -9,6 +9,8 @@ module "vpc" {
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
   database_subnets= ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
   
+  map_public_ip_on_launch = true
+  
   create_database_subnet_group           = true
   create_database_subnet_route_table     = true
   create_database_internet_gateway_route = true
