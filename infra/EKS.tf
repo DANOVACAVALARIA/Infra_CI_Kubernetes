@@ -24,6 +24,10 @@ module "eks" {
       desired_size = 3
       vpc_security_group_ids = [aws_security_group.ssh_cluster.id]
       instance_types = ["t3.micro"]
+
+      iam_role_additional_policies = {
+        AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      }
     }
   }
 }
